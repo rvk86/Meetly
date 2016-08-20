@@ -4,6 +4,10 @@
 </header>
 <main>
   <div>
-    <h1>Found in {{ $ctrl.name }}.html</h1>
+    <h1>{{ $ctrl.test }}</h1>
+
+  <button id="authorize-button" ng-click="$ctrl.gapi.auth(false, 'about')">
+  Authorize
+  </button>
   </div>
 </main>
