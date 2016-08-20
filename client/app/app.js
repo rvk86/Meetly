@@ -4,11 +4,14 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import 'normalize.css';
+import style from 'bootstrap/dist/css/bootstrap.min.css';
+import Bootstrap from 'angular-ui-bootstrap';
 
 angular.module('app', [
     uiRouter,
     Common,
-    Components
+    Components,
+    Bootstrap
   ])
 
 .config(($locationProvider) => {
@@ -24,7 +27,7 @@ angular.module('app', [
   gapi_scopes: ['https://www.googleapis.com/auth/calendar.readonly']
 
 })
-// 
+//
 // .run(function($http, Gapi) {
 //   "ngInject";
 //   $http({

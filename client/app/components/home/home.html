@@ -1,13 +1,7 @@
-<navbar></navbar>
-<header>
-  <hero></hero>
-</header>
-<main>
-  <div>
-    <h1>{{ $ctrl.test }}</h1>
+<div class="text-center">
+  <h1>Welcome to Meetly!</h1>
 
-  <button id="authorize-button" ng-click="$ctrl.gapi.auth(false, 'about')">
-  Authorize
+  <button class="btn btn-primary" ng-click="$ctrl.gapi.auth(false, 'about')">
+    Authorize with Google
   </button>
-  </div>
-</main>
+</div>
