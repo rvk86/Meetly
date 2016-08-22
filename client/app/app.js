@@ -23,25 +23,16 @@ angular.module('app', [
 
 .constant('config', {
 
+  gapi_script_id: 'MBCiR339XZjkctGCCU_95FaQDKs0hEEzk',
   gapi_client_id: '1092950428665-vlb7p824fki51thi8u6n640h7ipta11q.apps.googleusercontent.com',
-  gapi_scopes: ['https://www.googleapis.com/auth/calendar.readonly']
+  gapi_scopes: ['https://www.google.com/calendar/feeds',
+                'https://www.googleapis.com/auth/calendar.readonly',
+                'https://www.googleapis.com/auth/script.storage',
+                'https://www.googleapis.com/auth/userinfo.email'],
+  calendar_ids: ['0dnl1h7kt9hptdht8s7bn7v03k@group.calendar.google.com',
+                 'qq8bksutglfverg08u02i5sqhk@group.calendar.google.com',
+                 'lib9bj2af8i23r110m90f01oh4@group.calendar.google.com']
 
 })
-//
-// .run(function($http, Gapi) {
-//   "ngInject";
-//   $http({
-//     method: 'GET',
-//     url: 'https://apis.google.com/js/client.js'
-//   }).then(function successCallback(response) {
-//   // this callback will be called asynchronously
-//   // when the response is available
-//     Gapi.auth(false);
-//   }, function errorCallback(response) {
-//   // called asynchronously if an error occurs
-//   // or server returns response with an error status.
-//   });
-//
-// })
 
 .component('app', AppComponent);

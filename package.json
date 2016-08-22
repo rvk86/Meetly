@@ -8,6 +8,7 @@
     "angular-ui-bootstrap": "^2.1.0",
     "angular-ui-router": "^1.0.0-beta.1",
     "bootstrap": "^3.3.7",
+    "moment": "^2.14.1",
     "normalize.css": "^3.0.3"
   },
   "devDependencies": {
