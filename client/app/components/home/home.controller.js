@@ -1,9 +1,8 @@
 class HomeController {
-  constructor($location, Gapi) {
+  constructor(Gapi) {
     'ngInject';
 
     this.gapi = Gapi;
-    this.location = $location;
 
   }
 

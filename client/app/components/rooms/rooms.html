@@ -1,0 +1,38 @@
+<h3 class="text-center">Welcome {{$ctrl.gapi.user}}!</h3>
+
+<div class="row">
+
+  <!-- <button class="btn btn-primary" ng-click="$ctrl.gapi.auth(false, 'rooms')">
+    Authorize with Google
+  </button>
+  <button class="btn btn-primary" ng-click="$ctrl.gapi.getBusy({'test': 'bert'})">
+    Get busy
+  </button> -->
+
+  <div class="col-sm-4" ng-repeat="c in $ctrl.calendars">
+    <div class="panel" ng-class="c.occupied ? 'panel-danger' : 'panel-success'">
+      <div class="panel-heading">
+        <h3>{{c.name}}</h3>
+      </div>
+      <div class="panel-body">
+        <div ng-if="c.occupied">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{c.occupied.user}}<br/>
+          <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            {{c.occupied.started}}<br/><br/>
+            {{c.id}}
+          <button class="btn btn-danger"
+                  ng-click="$ctrl.stopMeeting(c.id)"
+                  ng-if="c.occupied.user == $ctrl.gapi.user">
+            Stop meeting!
+          </button>
+        </div>
+        <div ng-if="!c.occupied">
+          <button class="btn btn-success" ng-click="$ctrl.startMeeting(c.id)">
+            Start meeting!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
