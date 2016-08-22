@@ -16,8 +16,8 @@ class HomeController {
 
   setCalendars() {
 
+    console.log('setCalendars');
     this.gapi.run('getCalendars', [this.gapi.calendar_ids]).then((result) => {
-      console.log('setCalendars');
       console.log(result);
       this.rootScope.$apply(() => {
         this.calendars = result.result;
@@ -32,8 +32,8 @@ class HomeController {
 
   startMeeting(calendarId) {
 
-    this.gapi.run('startMeeting', [calendarId]).then((result) => {
-      console.log('startMeeting');
+    console.log('startMeeting');
+    this.gapi.run('startMeeting', [this.gapi.user, calendarId]).then((result) => {
       console.log(result);
       this.setCalendars();
     }, (error) => {
@@ -46,8 +46,8 @@ class HomeController {
 
   stopMeeting(calendarId) {
 
-    this.gapi.run('stopMeeting', [calendarId]).then((result) => {
-      console.log('stopMeeting');
+    console.log('stopMeeting');
+    this.gapi.run('stopMeeting', [this.gapi.user, calendarId]).then((result) => {
       console.log(result);
       this.setCalendars();
     }, (error) => {

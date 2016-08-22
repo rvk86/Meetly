@@ -25,13 +25,17 @@ class GapiService {
 
       if (authResult && !authResult.error) {
 
-          this.run('getUser').then((result) => {
+        gapi.client.load('oauth2', 'v2').then(() => {
+
+          var request = gapi.client.oauth2.userinfo.get().then((result) => {
             this.rootScope.$apply(() => {
-              this.user = result.result;
+              this.user = result.result.email;
               this.initialized = true;
               this.location.path(location);
             });
           });
+
+        });
 
       } else {
 
@@ -46,6 +50,9 @@ class GapiService {
 
   run(method, args=[]) {
 
+    console.log('Run method: ');
+    console.log(method);
+
     var request = {
       'function': method,
       'parameters': args,
@@ -59,6 +66,7 @@ class GapiService {
       'body': request
     }).then((result) => {
 
+      console.log(result);
       return result.result.response;
 
     }, (error) => {

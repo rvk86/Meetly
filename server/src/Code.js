@@ -1,9 +1,6 @@
-var scriptProps = PropertiesService.getScriptProperties();
-var user = Session.getEffectiveUser().getEmail();
-
-
-function startMeeting(calendarId) {
-
+function startMeeting(user, calendarId) {
+  
+  var scriptProps = PropertiesService.getScriptProperties();
   var calendars = JSON.parse(scriptProps.getProperty('calendars'));
   
   if(!calendars) {
@@ -11,41 +8,40 @@ function startMeeting(calendarId) {
   }
   
   calendars[calendarId] = {user: user, started: new Date()};
-  scriptProps.setProperty('calendars', JSON.stringify(calendars));
   
-  return calendars;
+  var json = JSON.stringify(calendars);
+  scriptProps.setProperty('calendars', json);
+  
+  return json;
   
 }
 
 
-function stopMeeting(calendarId) {
+function stopMeeting(user, calendarId) {
 
+  var scriptProps = PropertiesService.getScriptProperties();
   var calendars = JSON.parse(scriptProps.getProperty('calendars'));
   
   var cal = CalendarApp.getCalendarById(calendarId);
   cal.createEvent("Meetly meeting by " + user, new Date(calendars[calendarId]['started']), new Date());
   
   delete calendars[calendarId];
-  scriptProps.setProperty('calendars', JSON.stringify(calendars));
   
-  return calendars;
+  var json = JSON.stringify(calendars);
+  scriptProps.setProperty('calendars', json);
+  
+  return json;
   
 }
 
 
 function getCalendarStatus(calendarId) {
 
+  var scriptProps = PropertiesService.getScriptProperties();
   var calendars = JSON.parse(scriptProps.getProperty('calendars'));
   if(!calendars) return false;
 
   return calendars[calendarId];
-  
-}
-
-
-function getUser() {
-  
-  return user;
   
 }
 

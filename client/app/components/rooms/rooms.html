@@ -19,7 +19,6 @@
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{c.occupied.user}}<br/>
           <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
             {{c.occupied.started}}<br/><br/>
-            {{c.id}}
           <button class="btn btn-danger"
                   ng-click="$ctrl.stopMeeting(c.id)"
                   ng-if="c.occupied.user == $ctrl.gapi.user">
